@@ -1,0 +1,133 @@
+  {
+    id: "",
+
+    SKU: "", //EAN-8 CODES,
+    //   Offial name of the product
+    title: "",
+
+    describtion: "", //markdown format so it can be formatted
+
+    //   Pricing of the product
+    prices: {
+      // Main price of the product
+      regular: Number,
+
+      // Sale price of the product
+      sale: Number,
+    },
+
+    // Visual assets of a product. a product can not be uploaded with atleast one image
+    images: {
+      // Main image of the product
+      primary: "",
+
+      // extra images
+      additional: [],
+
+      // Optional. will be displayed on auto play on the product page
+      video: "", //optional
+    },
+
+    productType: [], //Enum ["Simple", "Variable"],
+
+    //if productType === variable then it will have variations
+    variations: [
+      //if a variation corresponds to a **attribute product then it's stock will be determined by the **attribute product using a unique `identifier` property
+      //this is how an **attribute product could look like
+      /*
+          {
+            title: "",
+        SKU: EAN-8 CODES,
+            identifier: uuid, ** i.e all product types e.g tshirts will bear this identifier that will link them to   this **attribute product
+            quantity: Number, ** the stock quantity from which all products linked to this **attribute product will be deducted
+            categories: "", ** optional
+            attributes: {
+              color: "",
+              size: "",
+              material: ""
+            }
+          }
+
+        */
+      {
+        attributeValues: [
+          // 0: uuid // identifier of an attribute product
+          { attribute: "Color", value: "black" },
+          { attribute: "Size", value: "S" },
+        ],
+        SKU: "", //EAN-8 CODES,
+        price: Number,
+        stockQuantity: Number, //Enum [ **if controlledStock === true then it could be "In Stock", "Out Of Stock", :else Number]
+        controlledStock: true,
+      },
+
+      {
+        attributeValues: [
+          // 0: uuid // identifier of an attribute product
+          { attribute: "Color", value: "black" },
+          { attribute: "Size", value: "M" },
+        ],
+        SKU: "", //EAN-8 CODES,
+        price: Number,
+        stockQuantity: Number, //Enum [ **if controlledStock === true then it could be "In Stock", "Out Of Stock", :else Number]
+        controlledStock: true,
+      },
+
+      {
+        attributeValues: [
+          // 0: uuid // identifier of an attribute product
+          { attribute: "Color", value: "black" },
+          { attribute: "Size", value: "L" },
+        ],
+        SKU: "", //EAN-8 CODES,
+        price: Number,
+        stockQuantity: Number, //Enum [ **if controlledStock === true then it could be "In Stock", "Out Of Stock", :else Number]
+        controlledStock: true,
+      },
+
+      {
+        attributeValues: [
+          // 0: uuid // identifier of an attribute product
+          { attribute: "Color", value: "black" },
+          { attribute: "Size", value: "XL" },
+        ],
+        SKU: "", //EAN-8 CODES,
+        price: Number,
+        stockQuantity: Number, //Enum [ **if controlledStock === true then it could be "In Stock", "Out Of Stock", :else Number]
+        controlledStock: true,
+      },
+
+      {
+        attributeValues: [
+          // 0: uuid // identifier of an attribute product
+          { attribute: "Color", value: "black" },
+          { attribute: "Size", value: "XXL" },
+        ],
+        SKU: "", //EAN-8 CODES,
+        price: Number,
+        stockQuantity: Number, //Enum [ **if controlledStock === true then it could be "In Stock", "Out Of Stock", :else Number]
+        controlledStock: true,
+      },
+    ],
+
+    // :else if productType === simple ? then
+    stockQuantity: Number, //Enum [ **if controlledStock === true then it could be "In Stock", "Out Of Stock", :else Number]
+
+    // Categories of the product. each category must have a unique identifier which will be the title
+    categories: [],
+
+    // Date the product was added. New In category will be based off product added within one week till date using this property
+    dateAdded: Date,
+
+    // Will be calculated based off of how many times the product has been ordered and how many people has it as their favorite and also the number of review and stars the product got
+    popularity: Number, //Enum [ **if controlledStock === true then it could be "In Stock", "Out Of Stock", :else Number]
+
+    // Reviews the product has and the users and the number of stars they gave it. anyone at any point in time (after or before order) should be able to review a product. If a user is not logged in he should be prompted to add their name
+    reviews: [
+      {
+        user: "",
+        info: "",
+        stars: Number,
+      },
+    ],
+  },
